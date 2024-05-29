@@ -1,6 +1,6 @@
 public class Emojify {
-  ArrayList<PImage> emojiList;
-  ArrayList<Float[]> colorList;
+  private ArrayList<PImage> emojiList;
+  private ArrayList<Integer[]> colorList;
   
   public Emojify(File folder) {
     // load the folder with emoji photos, add them to emojiList
@@ -13,15 +13,15 @@ public class Emojify {
   
   void averageColor() {
     for (int i = 0; i < emojiList.size(); i++) {
-      Float[] Color = new Float[3];
+      Integer[] Color = new Integer[3];
       PImage currentImage = emojiList.get(i);
       int times = 0;
-      for (int r = 0; r < currentImage.width; r += 10) {
-        for (int c = 0; c < currentImage.height; c += 10) {
+      for (int r = 0; r < currentImage.width; r += 16) {
+        for (int c = 0; c < currentImage.height; c += 16) {
           color currentColor = currentImage.get(r, c);
-          Color[0] = red(currentColor);
-          Color[1] = green(currentColor);
-          Color[2] = blue(currentColor);
+          Color[0] = (int) red(currentColor);
+          Color[1] = (int) green(currentColor);
+          Color[2] = (int) blue(currentColor);
           times++;
         }
       }
@@ -33,16 +33,23 @@ public class Emojify {
   }
   
   public PImage findClosest(Float[] Color) {
-    int rdiff = Integer.MAX_VALUE;
-    int gdiff = Integer.MAX_VALUE;
-    int bdiff = Integer.MAX_VALUE;
-    int closest = 0;
+    double distance = Double.MAX_VALUE;
+    int index = 0;
     for (int i = 0; i < colorList.size(); i++) {
       int curRdiff = (int) Math.abs(Color[0] - colorList.get(i)[0]);
       int curGdiff = (int) Math.abs(Color[1] - colorList.get(i)[1]);
       int curBdiff = (int) Math.abs(Color[2] - colorList.get(i)[2]);
-      if (curRdiff < rdiff) {
-        
+      double currDistance = Math.sqrt(Math.pow(curRdiff, 2) + Math.pow(curGdiff, 2) + Math.pow(curBdiff, 2));  
+      if (currDistance < distance) {
+        distance = currDistance;
+        index = i;
+      }
     }
   }
+  
+  public void setEmojis() {
+    
+  }
+  
+  
 }
