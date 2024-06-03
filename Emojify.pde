@@ -48,11 +48,4 @@ public class Emojify {
     return emojiList.get(index);
   }
   
-  public void setEmojis() {
-    while (!Image.isDone()) {
-      /// huh 
-    }
-  }
-  
-  
 }
