@@ -10,7 +10,7 @@ public class Emojify {
       emojiList.add(loadImage(fileName));
     }
   }
-  
+  // finds average color of emoji
   void averageColor() {
     for (int i = 0; i < emojiList.size(); i++) {
       Integer[] Color = new Integer[3];
@@ -45,10 +45,13 @@ public class Emojify {
         index = i;
       }
     }
+    return emojiList.get(index);
   }
   
   public void setEmojis() {
-    
+    while (!Image.isDone()) {
+      /// huh 
+    }
   }
   
   
