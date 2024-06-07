@@ -1,8 +1,8 @@
-public class Emojify {
+public class Emojifi {
   private ArrayList<PImage> emojiList;
   private ArrayList<Integer[]> colorList;
   
-  public Emojify(File folder) {
+  public Emojifi(File folder) {
     // load the folder with emoji photos, add them to emojiList
     File[] files = folder.listFiles();
     for (int i = 0; i < files.length; i++) {
