@@ -4,26 +4,27 @@ Emojify emojis;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+boolean start = true;
 //import java.nio.file;
 
 void setup() {
   size(1000, 500);
   background(176, 196, 222);
-  //textSize(50);
-  //textAlign(CENTER);
-  //text("Press Any Key To Get Started", 500, 250);
-  //if (keyPressed) {
-  selectInput("Select a file to start: ", "fileSelected");
-  //}
+  textSize(50);
+  textAlign(CENTER);
+  text("Press Any Key To Get Started", 500, 250);
+  
   // file path may differ... um
   File file = new File("/Users/feliceli/Downloads/apcs/apcs-final-project/Final/data/emojis");
   emojis = new Emojify(file);
- //emojis.printColors();
-  //System.out.println(file);
-  //File[] files = file.listFiles();
-  //System.out.println("THIS MANY " + files.length);
-  
+}
+
+void keyPressed() {
+  if (start) {
+    background(176, 196, 222);
+    selectInput("Select a file to start: ", "fileSelected");
+    start = false;
+  }
 }
 
 void fileSelected(File selection) {
@@ -31,47 +32,29 @@ void fileSelected(File selection) {
       println("Window was closed or the user hit cancel.");
   } else {
     println("User selected " + selection.getAbsolutePath());
+    background(176, 196, 222);
     pimg = loadImage(selection.getAbsolutePath());
     img = new Image(pimg);
-    //noLoop();
   }
   
 }
 
 void draw() {
-  //if (keyPressed) {
-  //  selectInput("Select a file to start: ", "fileSelected");
-  //}
   try {
-    image(pimg, 0, 0);
+    image(pimg, (width-pimg.width*2)/2, (height-pimg.height)/2);
     setEmojis();
   } catch (Exception e) {
-    //System.out.println("waiting...");
   }
-  //emojis.printColors();
-  //try {
-  //  setEmojis();
-  //  //System.out.println("emojis..");
-  //} catch (Exception e) {
-  //  //e.printStackTrace();
-  //  //System.out.println("nO EMOJIS");
-  //}
 }
 
 void setEmojis() {
   try {
     while (!img.isDone()) {
-      
       color c = img.nextRegion();
       Integer[] col = new Integer[] {(int) red(c), (int) green(c), (int) blue(c)};
-      //for (int i = 0; i < 3; i++) {
-      //  System.out.print(i + " " + col[i] + " ");
-      //}
-      //System.out.println();
       PImage closestEm = emojis.findClosest(col);
       closestEm.resize(5, 5);
-      image(closestEm, pimg.width + img.xcor, img.ycor);
-      //System.out.println("emojis? " + img.getX() + " " + img.getY());
+      image(closestEm, (1000-pimg.width*2)/2 + pimg.width + img.xcor, img.ycor + (height-pimg.height)/2);
     }
   } catch (Exception e) {
     System.out.println("NO");

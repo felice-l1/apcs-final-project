@@ -3,21 +3,12 @@ public class Image {
   private int ycor;
   private PImage img;
   private boolean isDone;
-  //private int side;
   
   public Image (PImage image) {
     img = image;
     xcor = -5;
     ycor = 0;
     isDone = false;
-    //if (side == 0) {
-    //  System.out.println("ZERO");
-    //  side = 15;
-    //}
-  }
-  
-  public void printIm() {
-    image(img, 0, 0);
   }
   
   public int getX() {
@@ -43,7 +34,6 @@ public class Image {
             green += green(currentColor);
             blue += blue(currentColor);
             times++;
-            //System.out.println("ONE");
           }
         }
         // after going through region, average the colors
@@ -52,7 +42,7 @@ public class Image {
         blue /= times;
         color c = color(red, green, blue);
         
-        // set up for next region
+        // set up x and y coordinates for next region
         int oldX = xcor;
         xcor += 5;
         if (xcor > img.width) {
