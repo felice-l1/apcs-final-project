@@ -14,8 +14,9 @@ void setup() {
   textAlign(CENTER);
   text("Press Any Key To Get Started", 500, 250);
   
-  // file path may differ... um
-  File file = new File("/home/students/odd/2025/fli50/apcsa/apcs-final-project/Final/data/emojis");
+  // instantiate an Emojify class
+  File file = new File(dataPath("emojis"));
+  //File file = new File("/home/students/odd/2025/fli50/apcsa/apcs-final-project/Final/data/emojis");
   emojis = new Emojify(file);
 }
 
