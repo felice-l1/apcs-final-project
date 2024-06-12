@@ -10,11 +10,11 @@ import java.nio.file.Paths;
 void setup() {
   size(1000, 500);
   background(176, 196, 222);
-  textSize(50);
-  textAlign(CENTER);
-  text("Press Any Key To Get Started", 500, 250);
+  //textSize(50);
+  //textAlign(CENTER);
+  //text("Press Any Key To Get Started", 500, 250);
   //if (keyPressed) {
-  //  selectInput("Select a file to start: ", "fileSelected");
+  selectInput("Select a file to start: ", "fileSelected");
   //}
   // file path may differ... um
   File file = new File("/Users/feliceli/Downloads/apcs/apcs-final-project/Final/data/emojis");
@@ -33,15 +33,15 @@ void fileSelected(File selection) {
     println("User selected " + selection.getAbsolutePath());
     pimg = loadImage(selection.getAbsolutePath());
     img = new Image(pimg);
-    noLoop();
+    //noLoop();
   }
   
 }
 
 void draw() {
-  if (keyPressed) {
-    selectInput("Select a file to start: ", "fileSelected");
-  }
+  //if (keyPressed) {
+  //  selectInput("Select a file to start: ", "fileSelected");
+  //}
   try {
     image(pimg, 0, 0);
     setEmojis();
