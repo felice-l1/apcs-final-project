@@ -15,7 +15,7 @@ void setup() {
   text("Press Any Key To Get Started", 500, 250);
   
   // file path may differ... um
-  File file = new File("/Users/feliceli/Downloads/apcs/apcs-final-project/Final/data/emojis");
+  File file = new File("/home/students/odd/2025/fli50/apcsa/apcs-final-project/Final/data/emojis");
   emojis = new Emojify(file);
 }
 
@@ -57,7 +57,8 @@ void setEmojis() {
       image(closestEm, (1000-pimg.width*2)/2 + pimg.width + img.xcor, img.ycor + (height-pimg.height)/2);
     }
   } catch (Exception e) {
-    System.out.println("NO");
     e.printStackTrace();
+    System.out.println("Check that the file path for the folder of emojis in setup() matches your device's!");
+
   }
 }

@@ -19,7 +19,7 @@ public class Emojify {
       averageColor();
     } catch (Exception e) {
       e.printStackTrace();
-      System.out.println("constructor LOL");
+      System.out.println("Check that the file path in setup() matches your device's!");
     }
   }
   
