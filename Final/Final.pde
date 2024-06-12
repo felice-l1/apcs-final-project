@@ -16,7 +16,6 @@ void setup() {
   
   // instantiate an Emojify class
   File file = new File(dataPath("emojis"));
-  //File file = new File("/home/students/odd/2025/fli50/apcsa/apcs-final-project/Final/data/emojis");
   emojis = new Emojify(file);
 }
 
@@ -59,7 +58,5 @@ void setEmojis() {
     }
   } catch (Exception e) {
     e.printStackTrace();
-    System.out.println("Check that the file path for the folder of emojis in setup() matches your device's!");
-
   }
 }
